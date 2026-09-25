@@ -161,6 +161,15 @@
                             Nosotros
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ request()->routeIs('formulario') ? 'active' : '' }}"
+                            href="{{ route ('formulario') }}"
+                        >
+                            Formulario
+                        </a>
+                    </li>
  
                     <li class="nav-item">
                         <a
