@@ -25,3 +25,5 @@ Route::get('/formulario', function () {
 
 Route::get('/clientes', [ClienteController::class, 'index'])
     ->name('clientes.index');
+
+    
