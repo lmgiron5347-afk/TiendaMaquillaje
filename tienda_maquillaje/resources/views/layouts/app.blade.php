@@ -170,6 +170,15 @@
                             Formulario
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a
+                            class="nav-link {{ request()->routeIs('clientes.producto') ? 'active' : '' }}"
+                            href="{{ route ('clientes.producto') }}"
+                        >
+                            Productos
+                        </a>
+                    </li>
  
                     <li class="nav-item">
                         <a

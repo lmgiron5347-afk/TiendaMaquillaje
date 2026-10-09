@@ -13,7 +13,7 @@ class ClienteController extends Controller
     {
         $clientes = Cliente::latest()->get();
 
-        return view('clientes.index', compact('clientes'));
+        return view('clientes.index');
     }
 
     public function create(): View
