@@ -30,4 +30,11 @@ Route::get('/clientes', [ClienteController::class, 'index'])
 Route::get('/productos', [ProductoController::class, 'index'])
     ->name('clientes.producto');
 
+//creacion formulario
+Route::get('/clientes/crear', [ClienteController::class, 'create'])
+    ->name('clientes.create');
+
+Route::post('/clientes', [ClienteController::class, 'store'])
+    ->name('clientes.store');
+
     
