@@ -1,7 +1,11 @@
+
 @extends('layouts.app')
- 
+
 @section('titulo', 'CLIENTES REGISTRADOS')
 
+@section('contenido')
+
+    {{-- Encabezado --}}
     <div class="d-flex flex-column flex-md-row justify-content-between mb-4 gap-3">
         <div>
             <h1 class="h3 fw-bold mb-1">Clientes registrados</h1>
@@ -10,17 +14,20 @@
             </p>
         </div>
 
-        <a href="" class="btn btn-cafe align-self-start">
+        <a href="{{ route('clientes.create') }}"
+           class="btn btn-cafe align-self-start">
             Registrar cliente
         </a>
     </div>
 
-    @if (session('exito'))
+    {{-- Mensaje de éxito --}}
+    @if (session('success'))
         <div class="alert alert-success">
-            {{ session('exito') }}
+            {{ session('success') }}
         </div>
     @endif
 
+    {{-- Tabla de clientes --}}
     <div class="card shadow-sm">
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -34,8 +41,10 @@
                             <th>Ciudad</th>
                             <th>Mensaje</th>
                             <th>Fecha</th>
+                            <th>Editar</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @forelse ($clientes as $cliente)
                             <tr>
@@ -45,11 +54,20 @@
                                 <td>{{ $cliente->telefono }}</td>
                                 <td>{{ $cliente->ciudad }}</td>
                                 <td>{{ $cliente->mensaje }}</td>
-                                <td>{{ $cliente->created_at->format('d/m/Y H:i') }}</td>
+                                <td>
+                                    {{ $cliente->created_at?->format('d/m/Y H:i') }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('clientes.edit', $cliente) }}"
+                                       class="btn btn-warning btn-sm">
+                                        Editar
+                                    </a>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center py-4 text-secondary">
+                                <td colspan="8"
+                                    class="text-center py-4 text-secondary">
                                     Todavía no existen registros.
                                 </td>
                             </tr>
@@ -59,5 +77,5 @@
             </div>
         </div>
     </div>
- 
-@section('contenido')
+
+@endsection
